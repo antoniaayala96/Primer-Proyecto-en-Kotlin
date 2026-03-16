@@ -1,14 +1,27 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
+import service.Inventario
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
+fun main() {
+    val inventario = Inventario()
+
+    println("SISTEMA DE INVENTARIO - TIENDA DE TELÉFONOS")
+    inventario.mostrarProductos()
+
+    val idProducto = 2
+    val cantidadSolicitada = 1
+
+    println("\nIntentando comprar $cantidadSolicitada unidad(es) del producto con ID $idProducto...")
+
+    if (inventario.hayStockSuficiente(idProducto, cantidadSolicitada)) {
+        inventario.reducirStock(idProducto, cantidadSolicitada)
+        println("Producto agregado al carrito. Inventario actualizado.")
+    } else {
+        println("No hay suficiente stock o el producto no existe.")
     }
+
+    inventario.mostrarProductos()
+
+    println("\nSimulando eliminación del carrito: devolviendo 1 unidad al inventario...")
+    inventario.aumentarStock(idProducto, 1)
+
+    inventario.mostrarProductos()
 }
