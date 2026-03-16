@@ -11,3 +11,4 @@ data class Producto(
         return "ID: $id | Nombre: $nombre | Marca: $marca | Precio: $${"%.2f".format(precio)} | Stock: $cantidadDisponible"
     }
 }
+
