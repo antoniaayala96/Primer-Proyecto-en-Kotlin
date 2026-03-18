@@ -1,7 +1,7 @@
 import service.Inventario
 
+
 fun main() {
-    val inventario = Inventario()
 
     println("SISTEMA DE INVENTARIO - TIENDA DE TELÉFONOS")
     inventario.mostrarProductos()
