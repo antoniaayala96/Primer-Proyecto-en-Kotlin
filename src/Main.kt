@@ -1,44 +1,99 @@
-import model.ItemCarrito
 import service.Inventario
 import service.CarritoService
-import model.Producto
 
-fun main() {
-
-    val inventario = Inventario();
-    val CarritoService = CarritoService();
-
-    val primerProducto = Producto(1, "iPhone 14 Pro", "Apple", 999.99, 10);
-    val segundoProducto = Producto(1, "Samsung Galaxy", "Samsung", 800.0, 10);
-
-    val itemsCarrito = listOf(
-        ItemCarrito(primerProducto, 2),
-        ItemCarrito(segundoProducto, 1)
-    )
-
-    CarritoService.mostrarCarrito(itemsCarrito);
-
-
-    println("SISTEMA DE INVENTARIO - TIENDA DE TELÉFONOS")
-    inventario.mostrarProductos()
-
-    val idProducto = 2
-    val cantidadSolicitada = 1
-
-    println("\nIntentando comprar $cantidadSolicitada unidad(es) del producto con ID $idProducto...")
-
-    if (inventario.hayStockSuficiente(idProducto, cantidadSolicitada)) {
-        inventario.reducirStock(idProducto, cantidadSolicitada)
-        println("Producto agregado al carrito. Inventario actualizado.")
-    } else {
-        println("No hay suficiente stock o el producto no existe.")
-    }
-
-    inventario.mostrarProductos()
-
-    println("\nSimulando eliminación del carrito: devolviendo 1 unidad al inventario...")
-    inventario.aumentarStock(idProducto, 1)
-
-    inventario.mostrarProductos()
+fun pausar() {
+    println("\nPresione Enter para continuar...")
+    readLine()
 }
 
+fun mostrarMenu() {
+    println("\n======================================")
+    println("   SISTEMA DE CARRITO DE COMPRAS")
+    println("======================================")
+    println("1. Ver productos disponibles")
+    println("2. Agregar producto al carrito")
+    println("3. Eliminar producto del carrito")
+    println("4. Ver carrito")
+    println("5. Salir")
+    print("Seleccione una opción: ")
+}
+
+fun main() {
+    val inventario = Inventario()
+    val carritoService = CarritoService()
+
+    var opcion: Int
+
+    do {
+        mostrarMenu()
+        opcion = readLine()?.toIntOrNull() ?: 0
+
+        when (opcion) {
+            1 -> {
+                println("\n--- PRODUCTOS DISPONIBLES ---")
+                inventario.mostrarProductos()
+                pausar()
+            }
+
+            2 -> {
+                println("\n--- AGREGAR PRODUCTO AL CARRITO ---")
+                inventario.mostrarProductos()
+
+                print("\nIngrese el ID del producto que desea agregar: ")
+                val idProducto = readLine()?.toIntOrNull()
+
+                print("Ingrese la cantidad que desea agregar: ")
+                val cantidad = readLine()?.toIntOrNull()
+
+                if (idProducto == null || cantidad == null) {
+                    println("\nEntrada inválida. Debe ingresar valores numéricos.")
+                } else {
+                    val producto = inventario.buscarProductoPorId(idProducto)
+
+                    if (producto != null) {
+                        carritoService.agregarProducto(producto, cantidad, inventario)
+                    } else {
+                        println("\nNo se encontró un producto con ese ID.")
+                    }
+                }
+
+                pausar()
+            }
+
+            3 -> {
+                println("\n--- ELIMINAR PRODUCTO DEL CARRITO ---")
+                carritoService.mostrarCarrito()
+
+                print("\nIngrese el ID del producto que desea eliminar: ")
+                val idProducto = readLine()?.toIntOrNull()
+
+                print("Ingrese la cantidad que desea eliminar: ")
+                val cantidad = readLine()?.toIntOrNull()
+
+                if (idProducto == null || cantidad == null) {
+                    println("\nEntrada inválida. Debe ingresar valores numéricos.")
+                } else {
+                    carritoService.eliminarProducto(idProducto, cantidad, inventario)
+                }
+
+                pausar()
+            }
+
+            4 -> {
+                println("\n--- CARRITO ACTUAL ---")
+                carritoService.mostrarCarrito()
+                pausar()
+            }
+
+            5 -> {
+                println("\nGracias por utilizar el sistema. ¡Hasta luego!")
+            }
+
+            else -> {
+                println("\nOpción inválida. Intente nuevamente.")
+                pausar()
+            }
+        }
+
+    } while (opcion != 5)
+}
