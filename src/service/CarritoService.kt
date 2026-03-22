@@ -3,34 +3,33 @@ import model.ItemCarrito
 
 class CarritoService {
 
+    fun mostrarCarrito(items: List<ItemCarrito>) {
 
+        println("\n╔══════════════════════════════════════════╗")
+        println("║         🛒  CARRITO DE COMPRAS           ║")
+        println("╚══════════════════════════════════════════╝")
 
-
-
-    fun mostrarCarrito(items : List<ItemCarrito>){
-
-        println("=== CARRITO DE COMPRAS ===")
-
-        if(items.isEmpty()){
-            println("el carrito esta vacio, intenta agregar algun producto")
+        if (items.isEmpty()) {
+            println("\n  ⚠️  El carrito está vacío.")
+            println("  Intenta agregar algún producto.\n")
             return
         }
 
-
-        for(item in items) {
-            println("===========================")
-            val total = (item.producto.precio * item.cantidad);
-            println("Nombre: ${item.producto.nombre}")
-            println("Marca: ${item.producto.marca}")
-            println("Precio: ${item.producto.precio}")
-            println("Total unitario: ${total}");
-            println("===========================")
-
+        items.forEachIndexed { index, item ->
+            val total = item.producto.precio * item.cantidad
+            println("\n  📦 Producto #${index + 1}")
+            println("  ┌─────────────────────────────────────┐")
+            println("  │ Nombre  : ${item.producto.nombre.padEnd(length = 26)}│")
+            println("  │ Marca   : ${item.producto.marca.padEnd(26)}│")
+            println("  │ Precio  : ${"$%.2f".format(item.producto.precio).padEnd(26)}│")
+            println("  │ Cantidad: ${item.cantidad.toString().padEnd(26)}│")
+            println("  │ Total   : ${"$%.2f".format(total).padEnd(26)}│")
+            println("  └─────────────────────────────────────┘")
         }
 
-        val totalItems = items.sumOf {it.producto.precio * it.cantidad};
-        println("Total: ${totalItems}");
-
-
+        val totalGeneral = items.sumOf { it.producto.precio * it.cantidad }
+        println("\n╔══════════════════════════════════════════╗")
+        println("║  💰 TOTAL GENERAL:${"$%.2f".format(totalGeneral).padEnd(24)}║")
+        println("╚══════════════════════════════════════════╝\n")
     }
 }
