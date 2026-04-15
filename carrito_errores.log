@@ -1,0 +1,62 @@
+[2026-04-14 17:18:43] Logger inicializado correctamente
+[2026-04-14 17:18:43] INFO: Aplicación iniciada
+================================================================================
+[2026-04-14 17:18:43] ERROR: Prueba de error al iniciar la aplicación
+Stack Trace:
+java.lang.RuntimeException: Prueba de error al iniciar la aplicación
+	at compras.carrito.www.MainKt.main(Main.kt:23)
+	at compras.carrito.www.MainKt.main(Main.kt)
+
+================================================================================
+[2026-04-14 17:39:23] Logger inicializado correctamente
+[2026-04-14 17:39:23] INFO: Aplicación iniciada
+================================================================================
+[2026-04-14 17:39:23] ERROR: Prueba de error al iniciar la aplicación
+Stack Trace:
+java.lang.RuntimeException: Prueba de error al iniciar la aplicación
+	at compras.carrito.www.MainKt.main(Main.kt:23)
+	at compras.carrito.www.MainKt.main(Main.kt)
+
+================================================================================
+[2026-04-14 17:46:54] Logger inicializado correctamente
+[2026-04-14 17:46:54] INFO: Aplicación iniciada
+================================================================================
+[2026-04-14 17:46:54] ERROR: Prueba de error al iniciar la aplicación
+Stack Trace:
+java.lang.RuntimeException: Prueba de error al iniciar la aplicación
+	at compras.carrito.www.MainKt.main(Main.kt:23)
+	at compras.carrito.www.MainKt.main(Main.kt)
+
+================================================================================
+[2026-04-14 17:51:06] Logger inicializado correctamente
+[2026-04-14 17:51:06] INFO: Aplicación iniciada
+================================================================================
+[2026-04-14 17:51:06] ERROR: Prueba de error al iniciar la aplicación
+Stack Trace:
+java.lang.RuntimeException: Prueba de error al iniciar la aplicación
+	at compras.carrito.www.MainKt.main(Main.kt:23)
+	at compras.carrito.www.MainKt.main(Main.kt)
+
+================================================================================
+[2026-04-14 17:59:03] Logger inicializado correctamente
+[2026-04-14 17:59:03] INFO: Aplicación iniciada
+================================================================================
+[2026-04-14 17:59:03] ERROR: Prueba de error al iniciar la aplicación
+Stack Trace:
+java.lang.RuntimeException: Prueba de error al iniciar la aplicación
+	at compras.carrito.www.MainKt.main(Main.kt:23)
+	at compras.carrito.www.MainKt.main(Main.kt)
+
+================================================================================
+[2026-04-14 18:03:36] Logger inicializado correctamente
+[2026-04-14 18:03:36] INFO: Aplicación iniciada
+================================================================================
+[2026-04-14 18:03:36] ERROR: Prueba de error al iniciar la aplicación
+Stack Trace:
+java.lang.RuntimeException: Prueba de error al iniciar la aplicación
+	at compras.carrito.www.MainKt.main(Main.kt:23)
+	at compras.carrito.www.MainKt.main(Main.kt)
+
+================================================================================
+[2026-04-14 18:05:05] INFO: Aplicación terminada correctamente
+================================================================================
